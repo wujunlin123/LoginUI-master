@@ -32,6 +32,8 @@
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
     <!-- //使用步行AR导航，配置Camera权限 -->
     <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 打电话的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <!-- //使用步行AR导航，配置Camera权限 -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
