@@ -303,6 +303,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
+
+
     }
     private void c(){
         runOnUiThread(new Runnable() {
