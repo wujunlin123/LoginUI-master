@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="cn.com.lttc.loginui">
 
-
-
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <!-- //修改网络状态的权限 0 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -75,6 +73,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Account_Base.App.Theme.NoTitle"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".addCamera" />
     </application>
 
 </manifest>

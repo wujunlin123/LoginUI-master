@@ -157,6 +157,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.bt_login_submit:
                 //登录
                 loginRequest();
+                startActivity(new Intent(MainActivity.this, addCamera.class));
+
                 //startActivity(new Intent(MainActivity.this, addCameraActivity.class));
                 break;
             case R.id.bt_login_register:
