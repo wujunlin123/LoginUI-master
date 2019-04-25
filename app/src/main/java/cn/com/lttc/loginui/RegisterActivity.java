@@ -99,6 +99,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Log.i("NO","请阅读并同意服务协议");
                 }
             }
+
+
+
         };
     }
 
