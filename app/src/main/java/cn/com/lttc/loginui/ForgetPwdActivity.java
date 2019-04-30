@@ -94,10 +94,12 @@ public class ForgetPwdActivity extends AppCompatActivity implements View.OnClick
         Log.i("2","手机号码"+user_phoneNumber);
         FormBody formBody = new FormBody.Builder().add("password", newPassWord).add("phonenumber",user_phoneNumber).build();
       // MyOkHttp.getInstance().asyncPost("http://192.168.199.154:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
-       // MyOkHttp.getInstance().asyncPost("http://192.168.1.6:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
-       MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
 
-       // MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
+        // MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
+      //居住地wifi地址
+      // MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
+        //手机wifi地址
+        MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
             @Override
             public void onError(Request request, IOException e) {
                 Log.i("NO", "修改密码失败");
@@ -153,8 +155,10 @@ public class ForgetPwdActivity extends AppCompatActivity implements View.OnClick
         Log.i("1","phoneNumber手机输入的手机号"+phoneNumber);
         FormBody formBody = new FormBody.Builder().add("phoneNumber", phoneNumber).build();
        //MyOkHttp.getInstance().asyncPost("http://192.168.199.154:8080/appReq/forgetPassController/getAuthNumber", formBody, new MyOkHttp.HttpCallBack() {
-      MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/forgetPassController/getAuthNumber", formBody, new MyOkHttp.HttpCallBack() {
-       // MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
+      //居住地wifi地址
+       // MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/forgetPassController/getAuthNumber", formBody, new MyOkHttp.HttpCallBack() {
+       //手机wifi地址
+           MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/forgetPassController/getAuthNumber", formBody, new MyOkHttp.HttpCallBack() {
       //  MyOkHttp.getInstance().asyncPost("http://192.168.1.6:8080/appReq/forgetPassController/getAuthNumber", formBody, new MyOkHttp.HttpCallBack() {
 
             @Override

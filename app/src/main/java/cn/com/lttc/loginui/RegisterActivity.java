@@ -1,6 +1,7 @@
 package cn.com.lttc.loginui;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -161,9 +162,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         FormBody formBody = new FormBody.Builder().add("username", userName).add("password", passWord).add("sex",sex).add("phonenumber",user_phoneNumber).build();
         Log.i("message","用户名"+userName +",密码"+passWord +",性别"+sex);
         //MyOkHttp.getInstance().asyncPost("http://192.168.199.154:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
-        //MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
+        //手机wifi地址
+        MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
       //  MyOkHttp.getInstance().asyncPost("http://192.168.1.6:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
-        MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
+       ////wifi居住地
+        //MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
 
             @Override
             public void onError(Request request, IOException e) {
@@ -177,6 +180,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 try{
                     JSONObject json=new JSONObject(result);
                     Toast.makeText(RegisterActivity.this,json.getString("String"),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                    toRegPage2();
+
 
 //                    if(json.getInt("state")<0){
 //                        Toast t=Toast.makeText(RegisterActivity.this,json.getString("String"),Toast.LENGTH_SHORT);
@@ -193,6 +200,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
             }
         });
+    }
+
+    private void toRegPage2() {
     }
 
     //判断验证码和手机输入的是否
@@ -239,10 +249,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         final String phoneNumber = et_register_username.getText().toString();
         FormBody formBody = new FormBody.Builder().add("phoneNumber", phoneNumber).build();
         //MyOkHttp.getInstance().asyncPost("http://192.168.199.154:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
-       // MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/forgetPassController/changePassWord", formBody, new MyOkHttp.HttpCallBack() {
+       //手机wifi地址
+        MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
        // MyOkHttp.getInstance().asyncPost("http://192.168.1.6:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
         //MyOkHttp.getInstance().asyncPost(formBody, "http://192.168.1.6:8080/appReq/registerController/checkCellphone", new MyOkHttp.HttpCallBack() {
-        MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
+        //居住地wifi地址
+            //MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
 
                         @Override
                     public void onError(Request request, IOException e) {
@@ -302,15 +314,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 tv_register_sms_call.setText(( t / 1000) + "后可重新发送验证码");
             }
         });
-
-
-
-
-
-
-
-
-
     }
     private void c(){
         runOnUiThread(new Runnable() {

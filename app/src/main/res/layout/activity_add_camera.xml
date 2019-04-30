@@ -35,13 +35,32 @@
                 android:orientation="horizontal" >
             <Button
                 android:id="@+id/callPolice"
-
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="110"
                 android:textColor="#31b968"
-
                 />
+                <Button
+                    android:id="@+id/Imagebutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:text="从网络获取图片"
+                    android:textColor="#31b968" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:gravity="left"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/Imagebutton" />
         </LinearLayout>
         <LinearLayout
         android:layout_width="fill_parent"
