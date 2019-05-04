@@ -47,6 +47,20 @@
                     android:layout_gravity="center"
                     android:text="从网络获取图片"
                     android:textColor="#31b968" />
+                <Button
+                    android:id="@+id/SaveImagebutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:text="截图"
+                    android:textColor="#31b968" />
+                <Button
+                    android:id="@+id/SaveVideoButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:text="录像"
+                    android:textColor="#31b968" />
 
 
         </LinearLayout>
