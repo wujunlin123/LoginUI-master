@@ -410,9 +410,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FormBody formBody = new FormBody.Builder().add("username", userName).add("password", passWord).build();
       // MyOkHttp.getInstance().asyncPost("http://192.168.199.154:8080/appReq/userController/loginRequest", formBody, new MyOkHttp.HttpCallBack() {
        //wifi居住地
-        MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/userController/loginRequest", formBody, new MyOkHttp.HttpCallBack() {
+        //MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/userController/loginRequest", formBody, new MyOkHttp.HttpCallBack() {
       //手机wifi连接地址
-       //MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/userController/loginRequest", formBody, new MyOkHttp.HttpCallBack() {
+       MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/userController/loginRequest", formBody, new MyOkHttp.HttpCallBack() {
        // MyOkHttp.getInstance().asyncPost("http://192.168.1.6:8080/appReq/userController/loginRequest", formBody, new MyOkHttp.HttpCallBack() {
 
             @Override

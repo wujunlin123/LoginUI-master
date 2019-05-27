@@ -163,10 +163,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Log.i("message","用户名"+userName +",密码"+passWord +",性别"+sex);
         //MyOkHttp.getInstance().asyncPost("http://192.168.199.154:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
         //手机wifi地址
-        //MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
+        MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
       //  MyOkHttp.getInstance().asyncPost("http://192.168.1.6:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
        //wifi居住地
-        MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
+        //MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/registerController/registerSuccess", formBody, new MyOkHttp.HttpCallBack() {
 
             @Override
             public void onError(Request request, IOException e) {
@@ -203,6 +203,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void toRegPage2() {
+
+        runOnUiThread(new Runnable() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void run() {
+                setContentView(R.layout.activity_main_login);
+
+            }
+        });
     }
 
     //判断验证码和手机输入的是否
@@ -250,11 +259,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         FormBody formBody = new FormBody.Builder().add("phoneNumber", phoneNumber).build();
         //MyOkHttp.getInstance().asyncPost("http://192.168.199.154:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
        //手机wifi地址
-       // MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
+        MyOkHttp.getInstance().asyncPost("http://192.168.43.228:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
        // MyOkHttp.getInstance().asyncPost("http://192.168.1.6:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
         //MyOkHttp.getInstance().asyncPost(formBody, "http://192.168.1.6:8080/appReq/registerController/checkCellphone", new MyOkHttp.HttpCallBack() {
         //居住地wifi地址
-            MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
+           // MyOkHttp.getInstance().asyncPost("http://192.168.199.178:8080/appReq/registerController/checkCellphone", formBody, new MyOkHttp.HttpCallBack() {
 
                         @Override
                     public void onError(Request request, IOException e) {

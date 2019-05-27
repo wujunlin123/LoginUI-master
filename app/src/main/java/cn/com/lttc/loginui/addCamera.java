@@ -1,5 +1,6 @@
 package cn.com.lttc.loginui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +20,9 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -33,14 +36,20 @@ import java.util.UUID;
 
 public class addCamera extends AppCompatActivity implements View.OnClickListener {
 
-    private Button call_Police;
+    private Button call_Police,addcameraSubmit;
     private  String imageUrl = "http://news.sciencenet.cn/upload/news/images/2011/3/20113301123128272.jpg";
     //手机ubuntu    ip
     // private  String path = "http://192.168.43.39:80/?action=stream";
     //居住地wifi的ubuntu ip
-    private  String path = "http://192.168.199.224:80/?action=stream";
+    private String inputIP;
+    //private  String path = "http://192.168.199.224:80/?action=stream";
+    private  String path ;
+    private  String path2;
 
-    private Button button,Imagebutton;
+    private Button button;
+    private Button Imagebutton;
+    private Button addCamera;
+    private EditText addcameraip;
     private Button SaveImagebutton,SaveVideoButton;
     private ImageView img;
     private Bitmap bmg;
@@ -81,17 +90,24 @@ public class addCamera extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_camera);
-        call_Police = (Button) findViewById(R.id.callPolice);
-        call_Police.setOnClickListener(this);
-        Imagebutton = (Button) findViewById(R.id.Imagebutton);
-        img = (ImageView) findViewById(R.id.img);
-        Imagebutton.setOnClickListener(this);
-        SaveImagebutton = (Button) findViewById(R.id.SaveImagebutton);
-        SaveImagebutton.setOnClickListener(this);
+        init();
 
-        SaveVideoButton = (Button) findViewById(R.id.SaveVideoButton);
-        SaveVideoButton.setOnClickListener(this);
+    }
+    private void init() {
+            setContentView(R.layout.activity_add_camera);
+            call_Police = (Button) findViewById(R.id.callPolice);
+            call_Police.setOnClickListener(this);
+            Imagebutton = (Button) findViewById(R.id.Imagebutton);
+            img = (ImageView) findViewById(R.id.img);
+            Imagebutton.setOnClickListener(this);
+            SaveImagebutton = (Button) findViewById(R.id.SaveImagebutton);
+            SaveImagebutton.setOnClickListener(this);
+
+            SaveVideoButton = (Button) findViewById(R.id.SaveVideoButton);
+            SaveVideoButton.setOnClickListener(this);
+
+            addCamera = (Button)findViewById(R.id.addCamera);
+            addCamera.setOnClickListener(this);
 
 
 
@@ -106,12 +122,9 @@ public class addCamera extends AppCompatActivity implements View.OnClickListener
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
 
 
-
-
-
-    }
 
 
     @Override
@@ -139,9 +152,52 @@ public class addCamera extends AppCompatActivity implements View.OnClickListener
                     e.printStackTrace();
                 }
                 break;
+            case  R.id.addCamera:
+                addCameraIP();
+                break;
+            case R.id.addcameraSubmit:
+                topage();
+
+                break;
         }
 
     }
+
+    private void topage() {
+
+
+        runOnUiThread(new Runnable() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void run() {
+                setContentView(R.layout.activity_add_camera);
+                path2 = addcameraip.getText().toString().trim();
+                inputIP = path2;
+                Log.i("111","phoneInputIP:"+path2);
+                init();
+
+            }
+        });
+            }
+
+
+    private void addCameraIP() {
+
+
+        setContentView(R.layout.activity_add_camera_two);
+        addcameraip = (EditText)findViewById(R.id.addcameraip);
+
+
+        addcameraSubmit = (Button)findViewById(R.id.addcameraSubmit);
+        addcameraSubmit.setOnClickListener(addCamera.this);
+        path2 = addcameraip.getText().toString().trim();
+
+
+
+            }
+
+
+
 
     private void saveImages() {
         if (Environment.getExternalStorageState().equals( Environment.MEDIA_MOUNTED))
@@ -318,7 +374,10 @@ public class addCamera extends AppCompatActivity implements View.OnClickListener
 
                 try {
                     //2:把网址封装为一个URL对象
+                    path = "http://"+inputIP+":80/?action=stream";
+
                     URL url = new URL(path);
+                    Log.i("123:","path"+path);
 
                     //3:获取客户端和服务器的连接对象，此时还没有建立连接
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -344,7 +403,7 @@ public class addCamera extends AppCompatActivity implements View.OnClickListener
                         //发生更新UI的消息
                         Message msg = handler.obtainMessage();
                         msg.obj = bm;
-
+                        //显示在界面上
                         handler.sendMessage(msg);
 
                         //显示在界面上
